@@ -106,9 +106,9 @@ public class Practise {
             System.exit(0);
         }
 
-            double area = Math.PI * radius * radius;
-            return area;
-        
+        double area = Math.PI * radius * radius;
+        return area;
+
     }
 
     public static void printAreas(double square, double rectangle, double triangle, double circle) {
