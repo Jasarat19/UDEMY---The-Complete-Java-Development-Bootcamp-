@@ -1,139 +1,160 @@
-public class Practise {
+import java.util.Scanner;
 
+public class Practise {
     public static void main(String[] args) {
 
-        System.out.println("Thank you for using the area calculator");
-        System.out.println("This calculator lets you get the area of: ");
-        System.out.println("1 - Square\n2 - Rectangle\n3 - Triangle\n4 - Circle\n");
+        Scanner scan = new Scanner(System.in);
 
-        // Task 5 – Call area functions.
+        System.out.println("Let's play Rock Paper Scissors.");
+        System.out.println("When I say 'shoot', Choose: rock, paper, or scissors.\n");
+        System.out.println("Are you ready? Write 'yes' if you are.");
 
-        double square = areaSquare(2);
-        double rectangle = areaRectangle(1, 2);
-        double triangle = areaTriangle(1, 2);
-        double circle = areaCircle(2);
+        // Task 1: See if the user wants to play.
+        String answer = scan.nextLine();
 
-        // Task 7 – Call a function that prints all the areas.
+        /*
+         * Task 2: Set up the game
+         * 
+         * • if the answer is yes:
+         * – print: Great!
+         * – print: rock - paper - scissors, shoot!
+         * – pick up user's choice.
+         * – get the computer choice (can only be done after task 3).
+         * – get the result (can only be done after task 4)
+         * – print everything (can only be done after task 5).
+         * • else:
+         * – print: Darn, some other time...!
+         */
+        if (answer.equals("yes")) {
+            System.out.println("Great!");
+            System.out.println("rock - paper - scissors, shoot!");
+            String yourChoice = scan.nextLine();
 
-        printAreas(square, rectangle, triangle, circle);
+            String computerChoice = computerChoice();
+            String result = resultGame(yourChoice, computerChoice);
+            printResult(yourChoice, computerChoice, result);
 
-    }
+        } else {
+            System.out.println("Darn, some other time!");
 
-    // Task 1 - Write a function that calculates the area of a square.
-
-    /**
-     * Function name: areaSquare - returns the area of a square.
-     * 
-     * @param side (double)
-     * @return the area (double)
-     * 
-     *         Inside the function:
-     *         1. If the side is negative, prints "Error: impossible" and terminates
-     *         the java program.
-     *         2. Calculates the area of the square. A = side²
-     */
-    public static double areaSquare(double side) {
-        if (side < 0) {
-            System.out.println("Error:impossible");
-            System.exit(0);
-        }
-        double area = side * side;
-        return area;
-    }
-
-    // Task 2 - Write a function that calculates the area of a rectangle.
-
-    /**
-     * Function name: areaRectangle – returns the area of a rectangle.
-     * 
-     * @param length (double).
-     * @param width  (double).
-     * @return the area (double)
-     * 
-     *         Inside the function:
-     *         1. If the length OR width is negative, prints "Error: impossible" and
-     *         terminates the program.
-     *         2. Calculates the area of the rectangle. A = length * width
-     */
-    public static double areaRectangle(double length, double width) {
-        if (length < 0 || width < 0) {
-            System.out.println("Error:impossible");
-            System.exit(0);
-        }
-        double area = length * width;
-        return area;
-    }
-
-    // Task 3 - Write a function that calculates the area of a triangle.
-
-    /**
-     * Function name: areaTriangle – it returns the area of a triangle.
-     * 
-     * @param base:   (double).
-     * @param height: (double).
-     * @return the area (double)
-     * 
-     *         Inside the function:
-     *         1. If the base OR height is negative, prints "Error: impossible" and
-     *         terminates the program.
-     *         2. Calculates the area of the triangle. A = (base * height)/2
-     */
-    public static double areaTriangle(double base, double height) {
-        if (base < 0 || height < 0) {
-            System.out.println("Error:impossible");
-            System.exit(0);
-        }
-        double area = (base * height) / 2;
-        return area;
-    }
-
-    // Task 4 - Write a function that calculates the area of circle.
-
-    /**
-     * Function name: areaCircle – it returns the area of a circle.
-     * 
-     * @param radius (double).
-     * @return area (double)
-     * 
-     *         Inside the function:
-     *         1. If the radius is negative, prints "Error: impossible" and
-     *         terminates the program.
-     *         2. Calculates the area of the circle.
-     */
-    public static double areaCircle(double radius) {
-        if (radius < 0) {
-            System.out.println("Error:impossible");
-            System.exit(0);
         }
 
-        double area = Math.PI * radius * radius;
-        return area;
-
+        scan.close();
     }
 
-    public static void printAreas(double square, double rectangle, double triangle, double circle) {
-        System.out.println("Square area: " + square);
-        System.out.println("Rectangle area: " + rectangle);
-        System.out.println("Triangle area: " + triangle);
-        System.out.println("Circle area: " + circle);
-
-    }
-    // Task 6: Write a function that prints every area
+    // Task 3 – Write a function where the computer picks a random choice.
 
     /**
-     * Function name: printAreas – it prints four areas
+     * Function name: computerChoice - picks randomly between rock paper and
+     * scissors
      * 
-     * @param square    – square area (double)
-     * @param rectangle – rectangle area (double)
-     * @param triangle  – triangle area (double)
-     * @param circle    – circle area (double)
+     * @return a choice (String).
      * 
-     *                  Inside the function:
-     *                  1. print: ("Square area: <square area>")
-     *                  2. print: ("Rectangle area: <rectangle area>")
-     *                  3. print: ("Triangle area: <triangle area>")
-     *                  4. print: ("Circle area: <circle area>")
+     *         Inside the function:
+     *         1. Picks a random number between 0 and 2.
+     *         2. if 0: returns the choice 'rock'
+     *         if 1: returns the choice 'paper'
+     *         if 2: returns the choice 'scissors'
+     */
+
+    public static String computerChoice() {
+
+        int min = 0;
+        int max = 2;
+        int value = (int) (Math.random() * (max - min + 1) + min);
+        if (value == 0) {
+            return "rock";
+        } else if (value == 1) {
+            return "paper";
+
+        } else if (value == 2) {
+            return "scissors";
+
+        }
+
+        return "";
+    }
+
+    // Task 4 – Write a function that compares the choices and returns the result.
+
+    public static String resultGame(String yourChoice, String computerChoice) {
+        String result = "";
+        if (yourChoice.equals("rock") && computerChoice.equals("scissors")
+                || yourChoice.equals("paper") && computerChoice.equals("rock")
+                || yourChoice.equals("scissors") && computerChoice.equals("paper")) {
+            result = "You win!";
+            return result;
+        }
+
+        else if (computerChoice.equals("rock") && yourChoice.equals("scissors")
+                || computerChoice.equals("paper") && computerChoice.equals("rock")
+                || yourChoice.equals("scissors") && computerChoice.equals("paper")) {
+            result = "You lose!";
+            return result;
+        }
+
+        else if (computerChoice.equals(yourChoice)) {
+            result = "The tie!";
+            return result;
+        }
+
+        return "Invalid CHOICE";
+
+    }
+
+    /**
+     * Function name: result - It returns the result of the game.
      * 
+     * @param yourChoice     (String)
+     * @param computerChoice (String)
+     * @return result (String)
+     *         Inside the function:
+     * 
+     *         1. result is "You win!" if:
+     *
+     *         You: "rock" Computer: "scissors"
+     *         You: "paper" Computer: "rock"
+     *         You: "scissors" Computer: "paper"
+     *
+     *         2. result is "You lose" if:
+     * 
+     *         Computer: "rock" You: "scissors"
+     *         Computer: "paper" You: "rock"
+     *         Computer: "scissors" You: "paper"
+     *
+     *         3. Otherwise, the result is "You lose!":
+     * 
+     * 
+     *         4. Otherwise, print "INVALID CHOICE" and exit the program.
+     *
+     * 
+     * 
+     *         // Task 5 – Write a function that prints your choice, the computer's,
+     *         and the
+     *         // result.
+     */
+
+    public static void printResult(String yourChoice, String computerChoice, String result) {
+
+        System.out.println(yourChoice);
+        System.out.println(computerChoice);
+        System.out.println(result);
+    }
+
+    /**
+     * Name: printResult - It prints everything (your choice, computer choice,
+     * result)
+     * 
+     * @param yourChoice     (String)
+     * @param computerChoice (String)
+     * @param result         (String)
+     * 
+     *                       Inside the function:
+     * 
+     *                       1. prints everything:
+     *                       – prints: You chose: <your choice>
+     *                       – prints: The computer chose: <computer choice>
+     *                       – prints: <result>
      */
 
 }

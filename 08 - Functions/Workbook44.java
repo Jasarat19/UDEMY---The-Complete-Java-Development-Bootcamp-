@@ -1,103 +1,139 @@
-import java.util.*;
-
 public class Workbook44 {
+
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    String shape = sc.nextLine(); // sc.nextLine();
 
-    double length = 0.0;
-    double width = 0.0;
-    double radius = 0.0;
-    double height = 0.0;
-    double base = 0.0;
-    
+      System.out.println("Thank you for using the area calculator");
+      System.out.println("This calculator lets you get the area of: ");
+      System.out.println("1 - Square\n2 - Rectangle\n3 - Triangle\n4 - Circle\n");
 
-    if (shape.equals("square")) {
-      length = sc.nextDouble();
-    } else if (shape.equals("rectangle")) {
-      length = sc.nextDouble();
-      width = sc.nextDouble();
-    }
+      // Task 5 – Call area functions.
 
-    else if (shape.equals("triangle")) {
-      height = sc.nextDouble();
-      base = sc.nextDouble();
-    } else if (shape.equals("circle")) {
-      radius = sc.nextDouble();
+      double square = areaSquare(2);
+      double rectangle = areaRectangle(1, 2);
+      double triangle = areaTriangle(1, 2);
+      double circle = areaCircle(2);
 
-    } else {
-      System.out.println("invalid shape taken");
-      System.exit(0);
-    }
+      // Task 7 – Call a function that prints all the areas.
 
-    double area = measure(shape, length, width, radius, height, base);
-
-    stringPrinter(length, height, base, radius, width, area, shape);
+      printAreas(square, rectangle, triangle, circle);
 
   }
 
-  public static double measure(String shape, double length, double width, double radius, double height, double base) {
+  // Task 1 - Write a function that calculates the area of a square.
 
-    double area = 0.0;
-    if (shape.equals("square")) {
-      area = measureSquare(length);
-    } else if (shape.equals("rectangle")) {
-      area = measureRectangle(length, width);
-    } else if (shape.equals("triangle")) {
-      area = measureTriangle(height, base);
-    } else if (shape.equals("circle")) {
-      area = measureCircle(radius);
-    }
-    return area;
+  /**
+   * Function name: areaSquare - returns the area of a square.
+   * 
+   * @param side (double)
+   * @return the area (double)
+   * 
+   *         Inside the function:
+   *         1. If the side is negative, prints "Error: impossible" and terminates
+   *         the java program.
+   *         2. Calculates the area of the square. A = side²
+   */
+  public static double areaSquare(double side) {
+      if (side < 0) {
+          System.out.println("Error:impossible");
+          System.exit(0);
+      }
+      double area = side * side;
+      return area;
   }
 
-  public static double measureRectangle(double length, double width) {
-    if (length < 0 || width < 0) {
-      System.out.println("the  length   and width cannot be neg");
-      System.exit(0); // bujhinai
+  // Task 2 - Write a function that calculates the area of a rectangle.
 
-    }
-    double area = length * width;
-    return area; // return is the last that runs in a func(break)
+  /**
+   * Function name: areaRectangle – returns the area of a rectangle.
+   * 
+   * @param length (double).
+   * @param width  (double).
+   * @return the area (double)
+   * 
+   *         Inside the function:
+   *         1. If the length OR width is negative, prints "Error: impossible" and
+   *         terminates the program.
+   *         2. Calculates the area of the rectangle. A = length * width
+   */
+  public static double areaRectangle(double length, double width) {
+      if (length < 0 || width < 0) {
+          System.out.println("Error:impossible");
+          System.exit(0);
+      }
+      double area = length * width;
+      return area;
+  }
+
+  // Task 3 - Write a function that calculates the area of a triangle.
+
+  /**
+   * Function name: areaTriangle – it returns the area of a triangle.
+   * 
+   * @param base:   (double).
+   * @param height: (double).
+   * @return the area (double)
+   * 
+   *         Inside the function:
+   *         1. If the base OR height is negative, prints "Error: impossible" and
+   *         terminates the program.
+   *         2. Calculates the area of the triangle. A = (base * height)/2
+   */
+  public static double areaTriangle(double base, double height) {
+      if (base < 0 || height < 0) {
+          System.out.println("Error:impossible");
+          System.exit(0);
+      }
+      double area = (base * height) / 2;
+      return area;
+  }
+
+  // Task 4 - Write a function that calculates the area of circle.
+
+  /**
+   * Function name: areaCircle – it returns the area of a circle.
+   * 
+   * @param radius (double).
+   * @return area (double)
+   * 
+   *         Inside the function:
+   *         1. If the radius is negative, prints "Error: impossible" and
+   *         terminates the program.
+   *         2. Calculates the area of the circle.
+   */
+  public static double areaCircle(double radius) {
+      if (radius < 0) {
+          System.out.println("Error:impossible");
+          System.exit(0);
+      }
+
+      double area = Math.PI * radius * radius;
+      return area;
 
   }
 
-  public static double measureSquare(double length) {
-    if (length < 0) {
-      System.out.println("the  length   and width cannot be neg");
-      System.exit(0); // bujhinai
-
-    }
-    double area = length * length;
-    return area; // return is the last that runs in a func(break)
+  public static void printAreas(double square, double rectangle, double triangle, double circle) {
+      System.out.println("Square area: " + square);
+      System.out.println("Rectangle area: " + rectangle);
+      System.out.println("Triangle area: " + triangle);
+      System.out.println("Circle area: " + circle);
 
   }
+  // Task 6: Write a function that prints every area
 
-  public static double measureTriangle(double height, double base) {
-    if (height < 0 || base < 0) {
-      System.out.println("the  length   and width cannot be neg");
-      System.exit(0); // bujhinai
+  /**
+   * Function name: printAreas – it prints four areas
+   * 
+   * @param square    – square area (double)
+   * @param rectangle – rectangle area (double)
+   * @param triangle  – triangle area (double)
+   * @param circle    – circle area (double)
+   * 
+   *                  Inside the function:
+   *                  1. print: ("Square area: <square area>")
+   *                  2. print: ("Rectangle area: <rectangle area>")
+   *                  3. print: ("Triangle area: <triangle area>")
+   *                  4. print: ("Circle area: <circle area>")
+   * 
+   */
 
-    }
-    double area = (base * height) / 2;
-    return area; // return is the last that runs in a func(break)
-
-  }
-
-  public static double measureCircle(double radius) {
-    if (radius < 0) {
-      System.out.println("the  radius cannot be neg");
-      System.exit(0); // bujhinai
-
-    }
-    double area = Math.PI * Math.pow(radius, 2);
-    return area; // return is the last that runs in a func(break)
-
-  }
-
-  public static void stringPrinter(double length, double height, double base, double radius, double width, double area,
-      String shape) {// option bujhini, meassure konta nibe
-    System.out.println("the area of the " + shape + " with l " + length + "  and w " + width + " is " + area);
-  }
-  
 }
