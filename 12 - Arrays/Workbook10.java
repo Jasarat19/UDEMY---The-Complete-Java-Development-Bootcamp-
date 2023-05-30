@@ -27,13 +27,8 @@ public class Workbook10 {
         System.out.println("\nThank you! Here are the toppings you ordered" );
         for(int i=0; i<toppings.length; i++){
             System.out.println(i +"." + toppings[i]);
-            
-            
-            
-
          }
 
-        
         // Task 2 here
         
         System.out.println("\nPress anything to confirm your order.");

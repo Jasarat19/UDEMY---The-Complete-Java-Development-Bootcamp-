@@ -22,8 +22,8 @@ public class Blackjack {
 
         // Task 5 – Print the sum of your hand value.
         // – print: your total is: <hand value>
-        int handvalue = cardNumber1 + cardNumber2;
-        System.out.println(" your total is:" + handvalue);
+        int handValue = cardNumber1 + cardNumber2;
+        System.out.println(" your total is:" + handValue);
 
         // Task 6 – Get two random cards for the dealer.
         // – Print: The dealer shows \n" + <first card> + "\nand has a card facing down
@@ -56,10 +56,10 @@ public class Blackjack {
             if (option.equals("hit")) {
                 int value = drawRandomCard();
                 String card = card(value);
-                handvalue = handvalue + value;
+                handValue = handValue + value;
                 System.out.println("\n" + card);
-                System.out.println("your new total is " + handvalue);
-                if (handvalue > 21) {
+                System.out.println("your new total is " + handValue);
+                if (handValue > 21) {
                     System.out.println("Bust! Player loses");
                     return;
                 }
@@ -84,7 +84,7 @@ public class Blackjack {
 
         if (dealerHandValue > 21) {
             System.out.println("Bust! Dealer loses");
-        } else if (dealerHandValue > handvalue) {
+        } else if (dealerHandValue > handValue) {
             System.out.println("Dealer wins!");
         } else {
             System.out.println("Player wins!");

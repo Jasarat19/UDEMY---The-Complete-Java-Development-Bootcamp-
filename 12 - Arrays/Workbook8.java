@@ -11,13 +11,9 @@ public class Workbook8 {
         for(int i=0; i < apple.length; i++){
             System.out.println(apple[i] + ": $" + price[i]); 
         }
-        
-       
+    
     }
 
-    
-        
-       
     }
 
 
