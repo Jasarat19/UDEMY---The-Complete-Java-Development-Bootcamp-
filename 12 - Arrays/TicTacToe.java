@@ -21,13 +21,13 @@ public class TicTacToe {
     for (int i = 0; i < 9; i++) {
       if (i % 2 == 0) {
         System.out.println("Turn: X");
-        int place[] = askUser(board);
+        int[] place = askUser(board);
         board[place[0]][place[1]] = 'X';
         printBoard(board);
 
       } else if (i % 2 != 0) {
         System.out.println("Turn: O");
-        int place2[] = askUser(board);
+        int[] place2 = askUser(board);
         board[place2[0]][place2[1]] = 'O';
         printBoard(board);
       }
