@@ -73,10 +73,8 @@ public class Hangman {
                     " =========\n" };
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
         int randomNumber = drawRandomCard(words.length);
-        // String randWord = words[randomNumber];
-        String randWord = "HA";
+        String randWord = words[randomNumber];
         char[] misses = new char[6];
         char[] randomWords = new char[randWord.length()];
         System.out.println(gallows[0]);
